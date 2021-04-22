@@ -1,5 +1,6 @@
 const express = require('express');
 
+
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -9,6 +10,22 @@ app.use(bodyParser.urlencoded({ extended : false }))
 app.use(bodyParser.json())
 
 const port = 3005;
+
+const mongoose = require('mongoose');
+
+const usuario = "92eduardocastillo"
+const password = "ow3wRAYT1tSaERjr"
+const dbName = "veterinaria"
+const uri = `mongodb+srv://${usuario}:${password}@cluster0.6s6vx.mongodb.net/${dbName}?retryWrites=true&w=majority`
+
+console.log("inicio")
+mongoose.connect(uri, 
+{ useNewUrlParser: true, useUnifiedTopology: true }
+)
+  .then(()=> console.log('conectado a mongodb')) 
+  .catch(e => console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"))
+console.log("fin")
+
 
 // motor de plantillas
 app.set('view engine', 'ejs');

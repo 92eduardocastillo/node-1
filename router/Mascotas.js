@@ -1,27 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const prueba = require('../prueba.json')
 
-router.post('/',(req, res)=>{
-    
-    const body = {
-        id: 2,
-        name: "edu"
+const Mascota = require('../models/mascota')
+
+router.get('/', async (req, res) => {
+    try {
+        const arrayMascotas = await Mascota.find();
+        console.log(arrayMascotas)
+        res.render("mascotas")
+    } catch (error) {
+        console.log(error)
     }
-    prueba.personas.push(body)
-
-    
-    res.send(prueba.personas);
-    
 })
 
-router.get('/', (req, res) => {
-    res.render("mascotas",{
-        arrayMascotas: [
-            {id: 'jsjsjs', nombre:'rex', descripcion: 'rex descripcion'},
-            {id: 'jaaa', nombre:'chanchan', descripcion: 'chanchan descripcion'}
-        ]
-    })
-})
-
-module.exports = router
+module.exports = router;
