@@ -30,8 +30,7 @@ const uri = `mongodb+srv://${usuario}:${password}@cluster0.6s6vx.mongodb.net/${d
 console.log("inicio")
 mongoose.connect(uri, 
 { useNewUrlParser: true, useUnifiedTopology: true }
-)
-  .then(()=> console.log('conectado a mongodb')) 
+) .then(()=> console.log('conectado a mongodb')) 
   .catch(e => console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"))
 console.log("fin")
 

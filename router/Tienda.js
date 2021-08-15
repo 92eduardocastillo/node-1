@@ -17,21 +17,9 @@ router.get('/api', (req, res) =>{
 })
 
 
-router.post('/peliculas', (req, res) =>{
-       
-        const body = req.body;
-        console.log(req.body);
+router.post('/peliculas', (req, res) =>{    
         
-        if(body.numero===1){
-        res.send({alert:"combo"});
-        }
-        else{
-            if(body.numero===2)
-            res.send({alert:"La seccion ha sido cerrada"}); 
-            else{
-                res.send({alert:"accion no valida"});     
-            } 
-        }
-})
+}
+)
 
 module.exports = router
