@@ -5,12 +5,13 @@ const Mascota = require('../models/mascota')
 
 router.get('/', async (req, res) => {
     try {
-        const arrayMascotas = await Mascota.find();
-        console.log(arrayMascotas)
-        res.render("mascotas")
+        const arrayMascotas = await Mascota.findById();
+        console.log("Mascotas Obtenidas")
+        res.status(200).json(arrayMascotas)
     } catch (error) {
         console.log(error)
     }
 })
+
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const express = require('express');
-
-
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+require('dotenv').config()
 
 const app = express();
 
@@ -15,23 +15,17 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.urlencoded({ extended : false }))
-
 app.use(bodyParser.json())
 
 const port = process.env.PORT || 3005;
 
-const mongoose = require('mongoose');
-
-const usuario = "92eduardocastillo"
-const password = "ow3wRAYT1tSaERjr"
-const dbName = "veterinaria"
-const uri = `mongodb+srv://${usuario}:${password}@cluster0.6s6vx.mongodb.net/${dbName}?retryWrites=true&w=majority`
+const uri = `mongodb+srv://92eduardocastillo:fPnul2pWfHnraMra@cluster0.6s6vx.mongodb.net/veterinaria?retryWrites=true&w=majority`
 
 console.log("inicio")
 mongoose.connect(uri, 
 { useNewUrlParser: true, useUnifiedTopology: true }
-) .then(()=> console.log('conectado a mongodb')) 
-  .catch(e => console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"))
+).then(()=> console.log('conectado a mongodb')) 
+  .catch(e => console.log(e))
 console.log("fin")
 
 
@@ -41,9 +35,10 @@ app.set('views', __dirname + '/views');
 
 app.use(express.static(__dirname + "/public")) 
 
-app.use('/api',require('./router/RutasWeb'))
+
+app.use('/api/user',require('./router/auth'))
 app.use('/mascotas',require('./router/Mascotas'))
-app.use('/tienda',require('./router/Tienda'))
+app.use('/tienda', require('./router/validate-token') ,require('./router/Tienda'))
 
 app.use((req, res, next) =>{
     res.status(404).render("404",{
@@ -52,8 +47,6 @@ app.use((req, res, next) =>{
     }) 
 })
 
-
-
 app.listen(port, () => {
-    console.log('servidor a su servisio enm el puerto' , port)
+    console.log('servidor en el puerto' , port)
 })
