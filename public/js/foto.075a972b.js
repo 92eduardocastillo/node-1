@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["foto"],{"1a16":function(t,a,o){"use strict";o.r(a);var e=function(){var t=this,a=t.$createElement,o=t._self._c||a;return o("div",{staticClass:"foto"},[o("h1",[t._v("Esta es la pagina de Foto")]),t._v(" Foto : "+t._s(t.$route.params.id)+" ")])},s=[],n=o("2877"),l={},i=Object(n["a"])(l,e,s,!1,null,null,null);a["default"]=i.exports}}]);
+//# sourceMappingURL=foto.075a972b.js.map

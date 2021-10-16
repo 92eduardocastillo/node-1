@@ -5,31 +5,17 @@ const router = express.Router();
 const url = "http://localhost:3000/productos"
 let resultado="4";
 
-const Obtener = async () => {
-    
-    
-
-        
-
-    
-}
-
 router.get('/', (req, res) =>{
+    console.log(req.body)
     res.render("index",{titulo : "tienda"})
 })
 
 router.get('/api',(req, res) =>{
-
+    
     res.status(200).json(
         {resultado: "datos"}      
     );
     
 })
-
-
-router.post('/peliculas', (req, res) =>{    
-        
-}
-)
 
 module.exports = router

@@ -40,6 +40,11 @@ app.use('/api/user',require('./router/auth'))
 app.use('/mascotas',require('./router/Mascotas'))
 app.use('/tienda', require('./router/validate-token') ,require('./router/Tienda'))
 
+
+app.get('/*',(req, res) =>{    
+    res.sendFile(__dirname + '/public/index.html')
+})
+
 app.use((req, res, next) =>{
     res.status(404).render("404",{
         titulo: "404",
